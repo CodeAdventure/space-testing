@@ -14,22 +14,28 @@ class ApiTest
     @_sentCommands = []
     @_expectedCommands = []
     @_commandBus = @_app.injector.get 'Space.messaging.CommandBus'
-    @_commitStore = @_app.injector.get 'Space.eventSourcing.CommitStore'
 
   given: (data) ->
     # Turn it into an array
     messages = [].concat(data)
-    events = []
-    commands = []
-    # Split messages up into events and commands
-    for message in messages
-      events.push(message) if message instanceof Space.messaging.Event
-      commands.push(message) if message instanceof Space.messaging.Command
-    # We have to add a commit to simulate historic events / commands
-    changes = events: events, commands: commands
-    aggregateId = data[0].sourceId
-    version = data[0].version ? 1
-    @_commitStore.add changes, aggregateId, version - 1
+    if @_app.injector.getMappingFor('Space.eventSourcing.CommitStore')?
+      # The SUT is event-sourcing -> let's simulate a historic commit
+      @_commitStore = @_app.injector.get 'Space.eventSourcing.CommitStore'
+      # Split messages up into events and commands
+      events = []
+      commands = []
+      for message in messages
+        events.push(message) if message instanceof Space.messaging.Event
+        commands.push(message) if message instanceof Space.messaging.Command
+      changes = events: events, commands: commands
+      aggregateId = data[0].sourceId
+      version = data[0].version ? 1
+      @_commitStore.add changes, aggregateId, version - 1
+    else
+      # The SUT is just using the messaging api -> send commands and events through
+      for message in messages
+        @_app.publish(message) if message instanceof Space.messaging.Event
+        @_app.send(message) if message instanceof Space.messaging.Command
 
   send: (command) ->
     @_apiArgs = [command]

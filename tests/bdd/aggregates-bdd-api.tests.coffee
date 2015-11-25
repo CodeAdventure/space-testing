@@ -118,12 +118,14 @@ describe 'Space.testing - aggregates', ->
         version: 1
         title: @title
         maxItems: @maxItems
+        meta: {}
       )
       new TodoAdded(
         sourceId: @id
         version: 2
         todoId: todoId
         title: todoTitle
+        meta: {}
       )
     ])
 

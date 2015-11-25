@@ -36,6 +36,7 @@ class ApiTest
       for message in messages
         @_app.publish(message) if message instanceof Space.messaging.Event
         @_app.send(message) if message instanceof Space.messaging.Command
+    return this
 
   send: (command) ->
     @_apiArgs = [command]

@@ -9,6 +9,6 @@
   },
   "space:event-sourcing": {
     "git":"https://github.com/meteor-space/event-sourcing.git",
-    "branch": "develop"
+    "branch": "fix/process-meta-data-correlations"
   }
 }

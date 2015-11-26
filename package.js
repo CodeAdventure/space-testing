@@ -16,6 +16,7 @@ Package.onUse(function(api) {
     'reactive-var',
     'reactive-dict',
     'tracker',
+    'ecmascript',
     'space:base@3.1.1',
     'practicalmeteor:munit@2.1.5'
   ]);
@@ -40,6 +41,7 @@ Package.onTest(function(api) {
     'check',
     'mongo',
     'underscore',
+    'ecmascript',
     'space:event-sourcing@2.1.0',
     'space:testing',
     'practicalmeteor:munit@2.1.5'
@@ -52,7 +54,8 @@ Package.onTest(function(api) {
   ]);
 
   api.addFiles([
-    'tests/bdd/aggregates-bdd-api.tests.coffee'
+    'tests/bdd/aggregates-bdd-api.tests.coffee',
+    'tests/bdd/api-bdd.tests.js'
   ], 'server');
 
 });

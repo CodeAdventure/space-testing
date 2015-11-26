@@ -18,6 +18,8 @@ Space.Module.test = Space.Application.test = (systemUnderTest, app=null) ->
         requiredModules: [this.publishedAs]
       })
     appInstance = new app()
+  else
+    appInstance = app
 
   for api in registeredBddApis
     returnValue = api(appInstance, systemUnderTest)

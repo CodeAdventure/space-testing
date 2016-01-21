@@ -1,7 +1,7 @@
 Package.describe({
   summary: 'Helpers for Testing Space Applications and Modules.',
   name: 'space:testing',
-  version: '3.0.0',
+  version: '3.0.1',
   git: 'https://github.com/meteor-space/testing.git',
   debugOnly: true
 });
@@ -21,7 +21,6 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'source/environment.js',
     'source/helpers/is-subclass.coffee',
     'source/assertions/depend_on.coffee',
     'source/assertions/extend.coffee',
@@ -44,7 +43,6 @@ Package.onTest(function(api) {
   ]);
 
   api.addFiles([
-    'tests/environment.test.js',
     'tests/assertions/depend_on.integration.coffee',
     'tests/assertions/extend.spec.coffee',
     'tests/assertions/to_match.integration.coffee'

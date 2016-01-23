@@ -1,16 +1,25 @@
 Changelog
 =========
 
+### 3.0.1
+- Specific BDD APIs have been extracted from this release, now contained in separate packages following the naming convention `space:testing-{packageName}`
+- New chai assertions developed for use in Space BDD APIs to allow
+for simple message-based testing using message buses.
+  - `matchArrayOfStructs` is used when wanting to test the two arrays match.
+  - `containArrayOfStructs` is used when wanting to ensure the array 
+  contains the expected structs.
+- Adds testing helper `isSubclassOf`.
+
 ### 2.0.1
 - Declare `space:event-sourcing` and `space:flux` as weak dependencies.
 
 ### 2.0.0
 - Updates to all latest space packages
-- Removes depricated module testing api (not needed -> use BDD apis and
+- Removes depreciated module testing api (not needed -> use BDD APIs and
   integration tests instead)
 
 ### 1.5.0
-Adds improved BDD style api for event-sourced applications.
+Adds improved BDD style API for event-sourced applications.
 
 ### 1.4.4
 Adds dependency on underscore to fix problems.

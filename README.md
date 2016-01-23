@@ -1,4 +1,4 @@
-# Space Testing [![Build Status](https://travis-ci.org/meteor-space/testing.svg?branch=master)](https://travis-ci.org/CodeAdventure/space-testing)
+# Space Testing [![Circle CI](https://circleci.com/gh/meteor-space/testing.svg?style=svg)](https://circleci.com/gh/meteor-space/testing)
 
 Helpers for Testing Space Applications and Modules.
 
@@ -6,10 +6,7 @@ Helpers for Testing Space Applications and Modules.
 `meteor add space:testing`
 
 ## Run the tests
-`mrt test-packages ./`
-
-## Release History
-* 1.0.0 - Publish first version to Meteor package system
+`meteor test-packages ./`
 
 ## License
 Licensed under the MIT license.
